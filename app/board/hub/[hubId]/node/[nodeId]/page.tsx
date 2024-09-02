@@ -89,9 +89,11 @@ export default function Page() {
                     <p className="text-[#cccccc] mt-72">{subNodeRes.length}개의 SubNode가 있습니다.</p>
 
             </div>
-            {subNodeRes?.map((key: any) => (
-                <SmallListItem key={key.id} postType="subnode" title={key.title} writer={key.writer_username} subnodeId={key.id} nodeId={key.parent_node_id} hubId={nodeRes.parent_hub_id} tag={nodeRes.title} />
-            ))}
+            <div className="flex flex-wrap gap-10">
+                {subNodeRes?.map((key: any) => (
+                    <SmallListItem key={key.id} postType="subnode" title={key.title} writer={key.writer_username} subnodeId={key.id} nodeId={key.parent_node_id} hubId={nodeRes.parent_hub_id} tag={nodeRes.title} />
+                ))}
+            </div>
         </div>
     )
 }
