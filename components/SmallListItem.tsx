@@ -32,7 +32,7 @@ const SmallListItem: React.FC<SmallListItemItemProps> = ({
             <Link href={href} >
                 <h2 className={twMerge("text-2xl text-[#a54cff] font-bold m-6", fontColor)}>{title}</h2>
             </Link>
-            <p className="mt-4 ml-6 text-[#bebebe]">분류: {tag}</p>
+            <p className="mt-4 ml-6 text-[#bebebe]">{postType === 'hub' ? '분류' : postType === 'node' ? '부모 허브' : postType === 'subnode' ? '부모 노드' : '몰루' }: {tag}</p>
             <p className="mt-10 ml-6 text-[#bebebe]">작성자: {writer}</p>
         </div>
      );

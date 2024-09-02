@@ -36,6 +36,21 @@ export default function Page(){ // 허브 상세 페이지
             return;
         }
         setNodeRes(nodeData)
+
+        const writerIds = nodeData.map(h => h.writer_id)
+            const { data: users, error: userError } = await supabase.from('users').select('id, username').in('id', writerIds)
+            if (userError) {
+                console.error(userError)
+            }   
+
+            const NodesWithUsernames = nodeData.map((node) => {
+                const writer = users?.find(user => user.id === node.writer_id )
+                return {
+                  ...node,
+                  writer_username: writer?.username
+                }
+            })
+            setNodeRes(NodesWithUsernames)
     }
     const fetchAllDatas = async () => {
         await fetchHub()
@@ -94,7 +109,7 @@ export default function Page(){ // 허브 상세 페이지
             </div>
             <div className="flex flex-wrap gap-10">
                 {nodeRes?.map((key: any) => (
-                    <SmallListItem key={key.id} postType="node" title={key?.title} hubId={key.parent_hub_id} nodeId={key.id} tag={hubRes.title} writer={key.writer_id} />
+                    <SmallListItem key={key.id} postType="node" title={key?.title} hubId={key.parent_hub_id} nodeId={key.id} tag={hubRes.title} writer={key.writer_username} />
                 ))}
             </div>
         </div>

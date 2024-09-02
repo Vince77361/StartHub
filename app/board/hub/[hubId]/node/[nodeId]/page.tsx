@@ -37,7 +37,21 @@ export default function Page() {
                 console.error("aaaa",error);
                 return;
             }
-            setSubNodeRes(data)
+            
+            const writerIds = data.map(h => h.writer_id)
+            const { data: users, error: userError } = await supabase.from('users').select('id, username').in('id', writerIds)
+            if (userError) {
+                console.error(userError)
+            }   
+
+            const SubNodesWithUsernames = data.map((subnode) => {
+                const writer = users?.find(user => user.id === subnode.writer_id )
+                return {
+                  ...subnode,
+                  writer_username: writer?.username
+                }
+            })
+            setSubNodeRes(SubNodesWithUsernames)
         }
         const fetchParentHub = async () => {
             const { data, error } = await supabase.from('hub').select('*').eq('id', nodeRes.parent_hub_id).single()
@@ -69,14 +83,14 @@ export default function Page() {
             </div>
             <div className="border border-[#848484] rounded-3xl min-h-[50rem] w-11/12 bg-[#1e1e1e] p-16 mr-20 my-14">
                 <h1 className="text-[#4c84ff] font-bold text-6xl">{nodeRes.title}</h1>
-                <p className="text-[#cccccc] mt-8">부모 노드: {nodeRes.parent_hub_id}</p>
+                {/* <p className="text-[#cccccc] mt-8">부모 노드: {nodeRes.parent_hub_id}</p> */}
                 <p>작성자: {nodeRes.writer_username}</p>
                 <p className="text-[#cccccc] mt-16 font-bold text-[20px]">{nodeRes.content}</p>
                     <p className="text-[#cccccc] mt-72">{subNodeRes.length}개의 SubNode가 있습니다.</p>
 
             </div>
             {subNodeRes?.map((key: any) => (
-                <SmallListItem key={key.id} postType="subnode" title={key.title} writer={key.writer_id} subnodeId={key.id} nodeId={key.parent_node_id} hubId={nodeRes.parent_hub_id} tag={key.parent_node_id} />
+                <SmallListItem key={key.id} postType="subnode" title={key.title} writer={key.writer_username} subnodeId={key.id} nodeId={key.parent_node_id} hubId={nodeRes.parent_hub_id} tag={nodeRes.title} />
             ))}
         </div>
     )
