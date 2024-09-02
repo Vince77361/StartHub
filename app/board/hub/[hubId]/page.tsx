@@ -80,7 +80,10 @@ export default function Page(){ // 허브 상세 페이지
         <div className="ml-20">
             <div className="w-11/12 flex justify-between mt-20">
                 <Button onClick={() => router.back()} className="px-7 py-5 text-[#cccccc]">뒤로가기</Button>
-                <Button onClick={Participate} className="px-7 py-5 text-[#a54cff]">참여하고 싶어요</Button>
+                <div className="flex gap-x-5">
+                    <Button onClick={() => router.push(`./${hubId}/write-node`)} className="px-7 py-5">새 노드 작성하기</Button>
+                    <Button onClick={Participate} className="px-7 py-5 text-[#a54cff]">참여하고 싶어요</Button>
+                </div>
             </div>
             <div className="border border-[#848484] rounded-3xl min-h-[50rem] w-11/12 bg-[#1e1e1e] p-16 mr-20 my-14">
                 <h1 className="text-[#a54cff] font-bold text-6xl">{hubRes?.title}</h1>
@@ -89,9 +92,11 @@ export default function Page(){ // 허브 상세 페이지
                 <p className="text-[#cccccc] mt-16 font-bold text-[20px]">{hubRes?.content}</p>
                     <p className="text-[#cccccc] mt-72">{nodeRes?.length}개의 Node가 있습니다.</p>
             </div>
-            {nodeRes?.map((key: any) => (
-                <SmallListItem key={key.id} postType="node" title={key?.title} hubId={key.parent_hub_id} nodeId={key.id} tag={hubRes.title} writer={key.writer_id} />
-            ))}
+            <div className="flex flex-wrap gap-10">
+                {nodeRes?.map((key: any) => (
+                    <SmallListItem key={key.id} postType="node" title={key?.title} hubId={key.parent_hub_id} nodeId={key.id} tag={hubRes.title} writer={key.writer_id} />
+                ))}
+            </div>
         </div>
     )
 }

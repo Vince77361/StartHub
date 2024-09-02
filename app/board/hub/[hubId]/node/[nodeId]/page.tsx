@@ -3,15 +3,15 @@
 import Button from "@/components/Button";
 import SmallListItem from "@/components/SmallListItem";
 import supabase from "@/supabase";
-import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Page() {
     const { nodeId } = useParams();
-    const [parentHubRes, setParentHubRes] = useState<any>({})
-    const [nodeRes, setNodeRes] = useState<any>({})
-    const [subNodeRes, setSubNodeRes] = useState<any[]>([])
+    const router = useRouter();
+    const [parentHubRes, setParentHubRes] = useState<any>({});
+    const [nodeRes, setNodeRes] = useState<any>({});
+    const [subNodeRes, setSubNodeRes] = useState<any[]>([]);
     useEffect(() => {
         const fetchNode = async () => {
             const { data, error } = await supabase.from('node').select('*').eq('id', nodeId).single();
@@ -59,7 +59,10 @@ export default function Page() {
         <div className="ml-20">
             <div className="w-11/12 flex justify-between mt-20">
                 <Button className="px-7 py-5 text-[#cccccc]">뒤로가기</Button>
-                <Button className="px-7 py-5 text-[#4c84ff]">아이디어 추가</Button>
+                <div className="flex gap-x-5">
+                    <Button onClick={() => router.push(`./${nodeId}/write-subnode`)} className="px-7 py-5">새 서브노드 작성하기</Button>
+                    <Button className="px-7 py-5 text-[#4c84ff]">아이디어 추가</Button>
+                </div>
             </div>
             <div className="w-11/12 h-fit p-8 bg-[#1e1e1e] border border-[#848484] rounded-3xl mt-10">
                 <h2 className="text-4xl text-[#a54cff] font-bold">HUB - {parentHubRes?.title}</h2>
