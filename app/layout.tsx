@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import SideBar from "@/components/Sidebar";
 import SessionProvider from "./Provider/SessionProvider";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,11 +24,8 @@ export default function RootLayout({
           <Header />
           <div className="flex">
             <SideBar />
-            <div className="flex-1">
-              {children}
-            </div>
+            <div className="flex-1">{children}</div>
           </div>
-          
         </SessionProvider>
       </body>
     </html>
