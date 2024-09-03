@@ -58,7 +58,7 @@ export default function Page() {
                 <h1 className="text-[#4c84ff] font-bold text-6xl">{subNodeRes.title}</h1>
                 {/* <p className="text-[#cccccc] mt-8">부모 노드: {nodeRes.parent_hub_id}</p> */}
                 <p>작성자: {subNodeRes.writer_username}</p>
-                <p className="text-[#cccccc] mt-16 font-bold text-[20px]">{subNodeRes.content}</p>
+                <p className="text-[#cccccc] mt-16 font-bold text-xl">{subNodeRes.content}</p>
 
             </div>
         </div>

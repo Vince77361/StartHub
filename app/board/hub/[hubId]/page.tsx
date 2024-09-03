@@ -104,7 +104,7 @@ export default function Page(){ // 허브 상세 페이지
                 <h1 className="text-[#a54cff] font-bold text-6xl">{hubRes?.title}</h1>
                 <p>작성자: {hubRes?.writer_username}</p>
                 <p className="text-[#cccccc] mt-8">분류: {hubRes?.tag}</p>
-                <p className="text-[#cccccc] mt-16 font-bold text-[20px]">{hubRes?.content}</p>
+                <p className="text-[#cccccc] mt-16 font-bold text-xl">{hubRes?.content}</p>
                     <p className="text-[#cccccc] mt-72">{nodeRes?.length}개의 Node가 있습니다.</p>
             </div>
             <div className="flex flex-wrap gap-10">

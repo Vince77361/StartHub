@@ -32,10 +32,10 @@ const SideBar: React.FC = () => {
             <ParticipatedList participant={participatedIn || []} />
             <div className="flex flex-col gap-y-4">
                 <Link href="/board/write-hub">
-                    <p className="text-[20px] font-bold">새 아이디어 만들기</p>
+                    <p className="text-xl font-bold">새 아이디어 만들기</p>
                 </Link>
-                <p className="text-[20px] font-bold">내 정보</p>
-                <p onClick={Logout} className="text-[20px] text-red-500 font-bold">로그아웃</p>
+                <p className="text-xl font-bold">내 정보</p>
+                <p onClick={Logout} className="text-xl text-red-500 font-bold">로그아웃</p>
             </div>
         </div>
      );

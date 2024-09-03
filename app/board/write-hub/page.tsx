@@ -43,7 +43,7 @@ export default function Page(){ // 허브
                 <div className="border border-[#848484] rounded-3xl min-h-[50rem] w-11/12 bg-[#1e1e1e] p-16 mr-20 mt-14">
                     <Input placeholder="여기에 제목을 입력하세요." className="text-[#a54cff] font-bold text-6xl w-full py-4" value={title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} />
                     <p className="text-[#cccccc] mt-8">분류: 엔터테인먼트</p>
-                    <TextArea placeholder="여기에 아이디어 내용을 입력하세요." className="text-[#cccccc] mt-16 font-bold text-[20px] w-full h-[50rem] resize-none" value={content} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)} />
+                    <TextArea placeholder="여기에 아이디어 내용을 입력하세요." className="text-[#cccccc] mt-16 font-bold text-xl w-full h-[50rem] resize-none" value={content} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)} />
                 </div>
             </form>
         </div>

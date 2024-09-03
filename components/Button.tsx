@@ -10,7 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: React.FC<ButtonProps> = ({ children, type="button", className, onClick }) => { // width 지정 필수
     return ( 
-        <button type={type} onClick={onClick} className={twMerge(`rounded-3xl bg-[#212121] text-white font-bold text-[20px] border border-[#848484]`, className)}>{children}</button>
+        <button type={type} onClick={onClick} className={twMerge(`rounded-3xl bg-[#212121] text-white font-bold text-xl border border-[#848484]`, className)}>{children}</button>
      );
 }
  

@@ -8,7 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = ({ className, type='text', placeholder, onChange, value }) => {
     return ( 
-        <input placeholder={placeholder} onChange={onChange} type={type} value={value} className={twMerge(`px-10 text-[#cccccc] text-[20px] bg-[#1e1e1e] focus:outline-none border border-[#848484] rounded-2xl`, className)}  />
+        <input placeholder={placeholder} onChange={onChange} type={type} value={value} className={twMerge(`px-10 text-[#cccccc] text-xl bg-[#1e1e1e] focus:outline-none border border-[#848484] rounded-2xl`, className)}  />
      );
 }
  

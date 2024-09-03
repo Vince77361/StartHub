@@ -85,7 +85,7 @@ export default function Page() {
                 <h1 className="text-[#4c84ff] font-bold text-6xl">{nodeRes.title}</h1>
                 {/* <p className="text-[#cccccc] mt-8">부모 노드: {nodeRes.parent_hub_id}</p> */}
                 <p>작성자: {nodeRes.writer_username}</p>
-                <p className="text-[#cccccc] mt-16 font-bold text-[20px]">{nodeRes.content}</p>
+                <p className="text-[#cccccc] mt-16 font-bold text-xl">{nodeRes.content}</p>
                     <p className="text-[#cccccc] mt-72">{subNodeRes.length}개의 SubNode가 있습니다.</p>
 
             </div>
