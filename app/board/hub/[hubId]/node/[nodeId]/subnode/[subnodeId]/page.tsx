@@ -57,11 +57,8 @@ export default function Page() {
     fetchAllDatas();
   }, [subnodeId, subNodeRes.parent_node_id]);
   return (
-    <div className="ml-20">
-      <div className="w-11/12 flex justify-between mt-20">
-        <Button className="px-7 py-5 text-[#cccccc]">뒤로가기</Button>
-        <Button className="px-7 py-5 text-[#4c84ff]">아이디어 추가</Button>
-      </div>
+    <div className="ml-20 mt-20">
+      <Button className="px-7 py-5 text-[#cccccc]">뒤로가기</Button>
       <div className="w-11/12 h-fit p-8 bg-[#1e1e1e] border border-[#848484] rounded-3xl mt-10">
         <h2 className="text-4xl text-[#4c84ff] font-bold">
           NODE - {parentNodeRes?.title}

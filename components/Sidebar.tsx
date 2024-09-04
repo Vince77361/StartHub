@@ -26,7 +26,7 @@ const SideBar: React.FC = () => {
   };
   return (
     <div className="w-96 h-screen bg-[#121212] border border-[#848484] rounded-r-2xl sticky top-0 mr-10 px-6 py-10 flex flex-col">
-      <h3 className="text-2xl font-bold">
+      <h3 onClick={() => router.push("/login")} className="text-2xl font-bold">
         {user?.username
           ? `${user?.username}님, 환영합니다!`
           : "로그인 해 주세요."}
